@@ -4,6 +4,10 @@
             "name": "apply_team",
             "description": "チーム情報登録・更新を行うコマンド"
         },
+        "update_team":{
+            "name": "update_team",
+            "description": "チーム情報更新を行うコマンド ※チーム情報登録済且つリーダーのみ実行可"
+        },
         "apply_tournament_team":{
             "name": "apply_tournament_team",
             "description": "大会用チーム情報登録・更新を行うコマンド"

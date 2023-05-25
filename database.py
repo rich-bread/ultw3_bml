@@ -28,7 +28,7 @@ class Database():
     
 class DiscordDatabase():
     def __init__(self) -> None:
-        self.dbid_xpimg = 1084139352076058664
+        pass
 
     async def post_image(self, channel:discord.TextChannel, image:discord.Attachment, filename:str, content:str=None) -> str:
         imgby = await image.read() #bytes型でファイルを取得
