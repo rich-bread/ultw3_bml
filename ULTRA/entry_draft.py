@@ -33,15 +33,15 @@ class EntryDraft(commands.Cog):
 
             #--大会情報確認処理--
             tournament_data = await self.dbfunc.get_valid_tournament_data()
-            #[ERROR] 受付中のシーズンが存在しない場合
+            #[ERROR] 受付中の大会が存在しない場合
             if not tournament_data:
-                error = "現在参加申請を行えるシーズンがありません。受付期間が開始し次第、参加申請を行ってください"
+                error = "現在参加申請を行える大会がありません。受付期間が開始し次第、参加申請を行ってください"
                 raise MyError(error)
             
             #--ユーザ情報確認処理--
             raw_user_data = await self.dbfunc.get_userdata(user_id=author.id)
             user_data = raw_user_data[0]
-            #[ERROR] コマンド実行者がリーダーのチームの情報が存在しない場合
+            #[ERROR] 指定ユーザの情報が存在しない場合
             if not user_data: 
                 error = "このコマンドはユーザ情報登録済みのユーザのみが使用できます。ユーザ情報登録を行ってから、このコマンドを実行してください"
                 raise MyError(error)
@@ -53,7 +53,7 @@ class EntryDraft(commands.Cog):
             updated_at = self.tmmod.str2dt(user_data[13])
             open_at = self.tmmod.str2dt(tournament_data[3])
             if updated_at < open_at:
-                error = f"指定ユーザ:<@{author.id}>のウデマエ画像更新が確認できませんでした。ウデマエ確認機能追加の為、シーズン毎に最新の最高XP及びウデマエ画像を提出する必要があります ※有効なウデマエ画像についてはルールブックを確認してください"
+                error = f"指定ユーザ:<@{author.id}>のウデマエ画像更新が確認できませんでした。ウデマエ確認機能追加の為、大会参加期間中に最新の最高XP及びウデマエ画像を提出する必要があります ※有効なウデマエ画像についてはルールブックを確認してください"
                 raise MyError(error)
             
             #--POST処理--
