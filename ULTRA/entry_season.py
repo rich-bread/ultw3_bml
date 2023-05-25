@@ -89,7 +89,6 @@ class EntrySeason(commands.Cog):
             
             #--POST処理--
             await self.dbfunc.post_teamdata(leader_id=author.id, post_data=post_data, is_updated=is_updated)
-            await self.dbfunc.log_teamdata(author_id=author.id, post_data=post_data)
             await self.dbfunc.log_entry_season(entered_at=now, author_id=author.id, season_name=seasondata[1], season_id=seasondata[2], team_name=teamdata[1])
         
         except MyError as e:
