@@ -1,0 +1,33 @@
+{
+    "commands":{
+        "apply_team":{
+            "name": "apply_team",
+            "description": "チーム情報登録・更新を行うコマンド"
+        },
+        "apply_tournament_team":{
+            "name": "apply_tournament_team",
+            "description": "大会用チーム情報登録・更新を行うコマンド"
+        },
+        "check_team":{
+            "name":"check_team",
+            "description": "コマンド実行者がリーダーとして登録されているチームの情報を確認するコマンド ※チーム情報登録済且つリーダーのみ実行可"
+        }
+    },
+    "describe":{
+        "team_name": "チーム名を入力してください。この登録名はリーグ戦の際に実際に呼称される名前となります",
+        "league": "出場するリーグを選択してください",
+        "member1": "チームに登録するメンバー①を指定してください",
+        "member2": "チームに登録するメンバー②を指定してください",
+        "member3": "チームに登録するメンバー③を指定してください",
+        "member4": "チームに登録するメンバー④を指定してください"
+    },
+    "choices":{
+        "league": [
+            {"name":"AVG21","value":1},
+            {"name":"AVG22","value":2},
+            {"name":"AVG23","value":3},
+            {"name":"AVG24","value":4},
+            {"name":"AVG25","value":5}
+        ]
+    }
+}

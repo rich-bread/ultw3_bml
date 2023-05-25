@@ -1,0 +1,20 @@
+{
+    "commands": {
+        "entry_season": {
+            "name": "entry_season",
+            "description": "シーズンへの参加申請を行うコマンド ※チーム情報登録済のリーダーのみ実行可"
+        },
+        "entry_tournament": {
+            "name": "entry_tournament",
+            "description": "大会への参加申請を行うコマンド ※大会チーム情報登録済のリーダーのみ実行可"
+        },
+        "entry_draft": {
+            "name": "entry_draft",
+            "description": "ドラフト杯への参加申請を行うコマンド"
+        },
+        "withdraw_season":{
+            "name": "withdraw_season",
+            "description": ""
+        }
+    }
+}

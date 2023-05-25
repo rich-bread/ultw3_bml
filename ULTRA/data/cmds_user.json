@@ -1,0 +1,59 @@
+{
+    "commands": {
+        "apply_user": {
+            "name": "apply_user",
+            "description": "ユーザ情報登録・更新を行うコマンド"
+        },
+        "update_user": {
+            "name": "update_user",
+            "description": "ユーザ情報更新を行うコマンド ※ユーザ情報登録済のユーザのみ実行可"
+        },
+        "update_xp": {
+            "name": "update_xp",
+            "description": "最高XP及びウデマエ画像を更新するコマンド ※ユーザ情報登録済のユーザのみ実行可"
+        },
+        "check_user": {
+            "name": "check_user",
+            "description": "指定ユーザの情報を確認するコマンド ※本人又は指定ユーザが所属するチームのリーダーのみ実行可"
+        }
+    },
+    "describe": {
+        "user": "対象ユーザを指定してください",
+        "user_name": "名前を入力してください。この登録名はリーグ戦の際に実際に付けていただく名前になります",
+        "friend_code": "フレンドコードを半角数字12桁(ハイフンあり)で入力してください",
+        "twitter_id": "TwitterIDを半角英数字15桁以下(@なし)で入力してください",
+        "position": "ポジションを選択してください",
+        "buki": "持ちブキを選択してください",
+        "splatzone_xp": "エリアの最高XPを半角数字(小数点以下切り捨て)で入力してください",
+        "allmode_xp": "全ルールの最高XPを半角数字(小数点以下切り捨て)で入力してください",
+        "image1": "指定された提出規格に沿うウデマエ画像1を添付してください",
+        "image2": "指定された提出規格に沿うウデマエ画像2を添付してください"
+    },
+    "choices": {
+        "position":[
+            {"name":"前衛","value":1},
+            {"name":"前中衛","value":2},
+            {"name":"中衛","value":3},
+            {"name":"中後衛","value":4},
+            {"name":"後衛","value":5},
+            {"name":"オールラウンダー","value":6}
+        ],
+        "buki":[
+            {"name":"シューター","value":1},
+            {"name":"スピナー","value":2},
+            {"name":"ローラー","value":3},
+            {"name":"フデ","value":4},
+            {"name":"スロッシャー","value":5},
+            {"name":"チャージャー","value":6},
+            {"name":"ブラスター","value":7},
+            {"name":"シェルター","value":8},
+            {"name":"マニューバー","value":9},
+            {"name":"ストリンガー","value":10},
+            {"name":"ワイパー","value":11},
+            {"name":"マルチ","value":12}
+        ]
+    },
+    "config":{
+        "xp_image": 1084139352076058664
+    }
+}
