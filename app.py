@@ -8,7 +8,7 @@ from datetime import datetime
 class Client(commands.Bot):
     def __init__(self):
         super().__init__(command_prefix=commands.when_mentioned, intents=discord.Intents.all())
-        self.cogslist = ['ULTRA.apply_user', 'ULTRA.update_xp', 'ULTRA.check_user', 'ULTRA.apply_team', 'ULTRA.check_team', 'ULTRA.entry_season', 'ULTRA.entry_draft']
+        self.cogslist = ['ULTRA.apply_user', 'ULTRA.update_xp', 'ULTRA.check_user', 'ULTRA.apply_team', 'ULTRA.update_team', 'ULTRA.check_team', 'ULTRA.entry_season', 'ULTRA.entry_draft']
 
     async def setup_hook(self):
         if self.cogslist:
