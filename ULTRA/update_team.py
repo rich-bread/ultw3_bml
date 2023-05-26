@@ -50,7 +50,7 @@ class UpdateTeam(commands.Cog):
             post_data = self.cmnfunc.create_postdata(name='team', org_data=team_data, team_name=team_name, league=league, updated_at=now)
             
             #--POST--
-            await self.dbfunc.post_teamdata(author.id, post_data, is_updated=True)
+            await self.dbfunc.post_teamdata(author.id, post_data, is_update=True)
             await self.dbfunc.log_teamdata(author.id, post_data)
         
         except MyError as e:

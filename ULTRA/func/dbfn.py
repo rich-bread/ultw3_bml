@@ -19,13 +19,13 @@ class DatabaseFunc():
         return td
     
     #指定ユーザの情報送信
-    async def post_userdata(self, user_id:Union[int,str], post_data:dict, is_updated:bool) -> requests.Response:
-        r = await self.db.post_db(name='write', data=post_data, table='user-master', column='discord_id', record=str(user_id), is_updated=is_updated)
+    async def post_userdata(self, user_id:Union[int,str], post_data:dict, is_update:bool) -> requests.Response:
+        r = await self.db.post_db(name='write', data=post_data, table='user-master', column='discord_id', record=str(user_id), is_update=is_update)
         return r
 
     #指定チームの情報送信
-    async def post_teamdata(self, leader_id:Union[int,str], post_data:dict, is_updated:bool) -> requests.Response:
-        r = await self.db.post_db(name='write', data=post_data, table='team-master', column='leader', record=str(leader_id), is_updated=is_updated)
+    async def post_teamdata(self, leader_id:Union[int,str], post_data:dict, is_update:bool) -> requests.Response:
+        r = await self.db.post_db(name='write', data=post_data, table='team-master', column='leader', record=str(leader_id), is_update=is_update)
         return r
     
     #受付期間中シーズンの情報取得
@@ -39,23 +39,21 @@ class DatabaseFunc():
         return td
     
     #指定情報のログ作成
-    def create_logdata(self, author_id:Union[int,str], post_data:dict) -> dict:
-        if post_data['created_at'] == post_data['updated_at']: is_updated = False
-        else: is_updated = True
+    def create_logdata(self, author_id:Union[int,str], post_data:dict, is_update:bool) -> dict:
         del post_data["created_at"]
-        add_data = {"updated_by": str(author_id), "is_updated": is_updated}
+        add_data = {"updated_by": str(author_id), "is_update": is_update}
         log_data = post_data|add_data
         return log_data
     
     #指定ユーザ情報をログ
-    async def log_userdata(self, author_id:Union[int,str], post_data:dict) -> requests.Response:
-        log_data = self.create_logdata(author_id, post_data)
+    async def log_userdata(self, author_id:Union[int,str], post_data:dict, is_update:bool) -> requests.Response:
+        log_data = self.create_logdata(author_id, post_data, is_update)
         r = await self.db.post_db(name='log', data=log_data, table='user-log')
         return r
 
     #指定チーム情報をログ
-    async def log_teamdata(self, author_id:Union[int,str], post_data:dict) -> requests.Response:
-        log_data = self.create_logdata(author_id, post_data)
+    async def log_teamdata(self, author_id:Union[int,str], post_data:dict, is_update:bool) -> requests.Response:
+        log_data = self.create_logdata(author_id, post_data, is_update)
         r = await self.db.post_db(name='log', data=log_data, table='team-log')
         return r
     

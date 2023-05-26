@@ -84,11 +84,10 @@ class EntrySeason(commands.Cog):
                     raise MyError(error)
             
             #--チーム情報作成処理--
-            is_updated = True
             post_data = self.cmnfunc.create_postdata(name='team', org_data=teamdata, season_id=seasondata[2], updated_at=now)
             
             #--POST処理--
-            await self.dbfunc.post_teamdata(leader_id=author.id, post_data=post_data, is_updated=is_updated)
+            await self.dbfunc.post_teamdata(leader_id=author.id, post_data=post_data, is_update=True)
             await self.dbfunc.log_entry_season(entered_at=now, author_id=author.id, season_name=seasondata[1], season_id=seasondata[2], team_name=teamdata[1])
         
         except MyError as e:

@@ -37,7 +37,6 @@ class UpdateXP(commands.Cog):
 
             author = interaction.user #コマンド実行者
             now = self.tmmod.dt2str(self.tmmod.change_timezone(interaction.created_at)) #現在日時
-            is_updated = 1 #登録更新判別値
 
             raw_userdata = await self.dbfunc.get_userdata(user.id)
             userdata = raw_userdata[0]
@@ -51,7 +50,7 @@ class UpdateXP(commands.Cog):
             for ciwh in ciwhl:
                 #[ERROR] 添付ファイルが画像ではなかった場合
                 if None in ciwh:
-                    raise Exception("添付されたファイルは画像ではありません。ウデマエ画像は画像形式のファイルで、BomuLeagueの提出規格に沿った画像を提出してください")
+                    raise MyError("添付されたファイルは画像ではありません。ウデマエ画像は画像形式のファイルで、BomuLeagueの提出規格に沿った画像を提出してください")
                 #[ERROR] 添付画像が1920×1080のゲーム内画像であった場合
                 if ciwh[0]==1920 and ciwh[1]==1080:
                     raise MyError("添付されたウデマエ画像がゲーム内画像であると判定されました。ウデマエ画像はBomuLeagueの提出規格に沿った画像を提出してください")
@@ -64,7 +63,7 @@ class UpdateXP(commands.Cog):
             post_data = self.cmnfunc.create_postdata(name='user', org_data=userdata, splatzone_xp=splatzone_xp, allmode_xp=allmode_xp, image1=img_urll[0], image2=img_urll[1], updated_at=now)
             
             #--POST--
-            await self.dbfunc.post_userdata(user.id, post_data, is_updated)
+            await self.dbfunc.post_userdata(user.id, post_data, is_update=True)
             await self.dbfunc.log_userdata(author.id, post_data)
 
         except MyError as e:

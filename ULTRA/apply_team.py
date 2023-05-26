@@ -41,13 +41,13 @@ class ApplyTeam(commands.Cog):
             raw_teamdata = await self.dbfunc.get_teamdata(author.id)
             teamdata = raw_teamdata[0]
             if not teamdata: 
-                apptype = 0
-                apptype_str = "登録"
+                is_update = False
+                is_update_str = "登録"
                 season_id = ""
                 created_at = now
             else:
-                apptype = 1
-                apptype_str = "更新"
+                is_update = True
+                is_update_str = "更新"
                 season_id = None
                 created_at = None
 
@@ -70,8 +70,8 @@ class ApplyTeam(commands.Cog):
                                                     created_at=created_at, updated_at=now)
             
             #--POST--
-            await self.dbfunc.post_teamdata(author.id, post_data, apptype)
-            await self.dbfunc.log_teamdata(author.id, post_data)
+            await self.dbfunc.post_teamdata(author.id, post_data, is_update)
+            await self.dbfunc.log_teamdata(author.id, post_data, is_update)
         
         except MyError as e:
             await interaction.followup.send(content=author.mention, embed=self.dcembed.error(str(e)))
@@ -82,7 +82,7 @@ class ApplyTeam(commands.Cog):
             await interaction.followup.send(content=author.mention,embed=self.dcembed.error(error))
 
         else:
-            success = f"リーダー{author.mention}のチーム情報{apptype_str}を受け付けました。データベースからの完了通知をお待ちください。通知が無かった場合は運営まで連絡をお願いします"
+            success = f"リーダー{author.mention}のチーム情報{is_update_str}を受け付けました。データベースからの完了通知をお待ちください。通知が無かった場合は運営まで連絡をお願いします"
             await interaction.followup.send(content=author.mention, embed=self.dcembed.success(success))
 
 
