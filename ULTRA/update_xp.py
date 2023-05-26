@@ -64,7 +64,7 @@ class UpdateXP(commands.Cog):
             
             #--POST--
             await self.dbfunc.post_userdata(user.id, post_data, is_update=True)
-            await self.dbfunc.log_userdata(author.id, post_data)
+            await self.dbfunc.log_userdata(author.id, post_data, is_update=True)
 
         except MyError as e:
             await interaction.followup.send(content=author.mention, embed=self.dcembed.error(str(e)))

@@ -51,7 +51,7 @@ class UpdateTeam(commands.Cog):
             
             #--POST--
             await self.dbfunc.post_teamdata(author.id, post_data, is_update=True)
-            await self.dbfunc.log_teamdata(author.id, post_data)
+            await self.dbfunc.log_teamdata(author.id, post_data, is_update=True)
         
         except MyError as e:
             await interaction.followup.send(content=author.mention, embed=self.dcembed.error(str(e)))
